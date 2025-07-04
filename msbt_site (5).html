@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSBT - Multi Saves Backup Tool</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Custom dark mode styles */
+    html.dark {
+      background-color: #1f2937;
+      color: #e5e7eb;
+    }
+    html.dark .bg-gray-100 {
+      background-color: #111827;
+    }
+    html.dark .bg-white {
+      background-color: #1f2937;
+    }
+    html.dark .text-gray-800 {
+      color: #e5e7eb;
+    }
+    html.dark .text-gray-600 {
+      color: #d1d5db;
+    }
+    html.dark .bg-gray-200 {
+      background-color: #374151;
+    }
+    html.dark .bg-gray-800 {
+      background-color: #111827;
+    }
+    html.dark .shadow {
+      box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-['Inter'] text-gray-800 transition-colors duration-300">
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-10">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold">MSBT</div>
+      <div class="space-x-4 hidden md:flex">
+        <a href="#home" class="hover:text-blue-600" data-i18n="nav-home">Home</a>
+        <a href="#features" class="hover:text-blue-600" data-i18n="nav-features">Features</a>
+        <a href="#feedback" class="hover:text-blue-600" data-i18n="nav-feedback">Feedback</a>
+        <a href="#roadmap" class="hover:text-blue-600" data-i18n="nav-roadmap">Roadmap</a>
+        <a href="#download" class="hover:text-blue-600" data-i18n="nav-download">Download</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button id="lang-toggle" class="text-2xl" title="Switch Language">🌐</button>
+        <button id="theme-toggle" class="text-2xl">🌓</button>
+        <button class="md:hidden text-2xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
+      </div>
+    </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow">
+      <div class="flex flex-col space-y-2 px-4 py-4">
+        <a href="#home" class="hover:text-blue-600" data-i18n="nav-home">Home</a>
+        <a href="#features" class="hover:text-blue-600" data-i18n="nav-features">Features</a>
+        <a href="#feedback" class="hover:text-blue-600" data-i18n="nav-feedback">Feedback</a>
+        <a href="#roadmap" class="hover:text-blue-600" data-i18n="nav-roadmap">Roadmap</a>
+        <a href="#download" class="hover:text-blue-600" data-i18n="nav-download">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Multi Saves Backup Tool</h1>
+      <p class="text-lg md:text-xl mb-6" data-i18n="hero-description">Protect your game saves automatically and reliably with mod support and flexible storage.</p>
+      <a href="#download" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200" data-i18n="hero-button">Download Now</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12" data-i18n="features-title">Key Features ✨</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <span class="text-4xl">🎮</span>
+          <h3 class="text-xl font-semibold mt-4" data-i18n="feature-monitoring-title">Monitoring & Backup</h3>
+          <p class="text-gray-600" data-i18n="feature-monitoring-desc">Track and back up saves for all your games.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <span class="text-4xl">⏰</span>
+          <h3 class="text-xl font-semibold mt-4" data-i18n="feature-scheduling-title">Auto-Scheduling</h3>
+          <p class="text-gray-600" data-i18n="feature-scheduling-desc">Schedule backups and forget about them.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <span class="text-4xl">🛠️</span>
+          <h3 class="text-xl font-semibold mt-4" data-i18n="feature-mods-title">Mods & Paths</h3>
+          <p class="text-gray-600" data-i18n="feature-mods-desc">Support for mods and custom directories.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <span class="text-4xl">💾</span>
+          <h3 class="text-xl font-semibold mt-4" data-i18n="feature-storage-title">Flexible Storage</h3>
+          <p class="text-gray-600" data-i18n="feature-storage-desc">Local, cloud, NAS, and more.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <span class="text-4xl">🔧</span>
+          <h3 class="text-xl font-semibold mt-4" data-i18n="feature-tray-title">System Tray</h3>
+          <p class="text-gray-600" data-i18n="feature-tray-desc">Manage from the tray without an open window.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <span class="text-4xl">🔍</span>
+          <h3 class="text-xl font-semibold mt-4" data-i18n="feature-discovery-title">Auto-Discovery</h3>
+          <p class="text-gray-600" data-i18n="feature-discovery-desc">Automatically find installed games.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <span class="text-4xl">🔄</span>
+          <h3 class="text-xl font-semibold mt-4" data-i18n="feature-restoration-title">Restoration</h3>
+          <p class="text-gray-600" data-i18n="feature-restoration-desc">Restore progress with one click.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <span class="text-4xl">📊</span>
+          <h3 class="text-xl font-semibold mt-4" data-i18n="feature-stats-title">Statistics</h3>
+          <p class="text-gray-600" V data-i18n="feature-stats-desc">Graphs and operation logs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feedback Section -->
+  <section id="feedback" class="bg-gray-200 py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6" data-i18n="feedback-title">Feedback ❓</h2>
+      <p class="text-lg mb-6" data-i18n="feedback-desc">Share ideas and bug reports via GitHub or our feedback form.</p>
+      <div class="space-x-4">
+        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700" data-i18n="feedback-github">GitHub Issue</a>
+        <a href="#" class="bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700" data-i18n="feedback-form">Feedback Form</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap Section -->
+  <section id="roadmap" class="py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6" data-i18n="roadmap-title">Roadmap 🌐</h2>
+      <p class="text-lg mb-6" data-i18n="roadmap-desc">Track upcoming features and development progress.</p>
+      <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700" data-i18n="roadmap-button">View Roadmap</a>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section id="download" class="bg-gray-200 py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6" data-i18n="download-title">Download 🔝</h2>
+      <p class="text-lg mb-6" data-i18n="download-desc">Install the latest version of MSBT from GitHub Releases.</p>
+      <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700" data-i18n="download-button">Download Release</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6">
+    <div class="container mx-auto px-4 text-center">
+      <p data-i18n="footer">© 2025 MSBT. Thanks for 500 ⭐ on GitHub! Special thanks to Varset.</p>
+    </div>
+  </footer>
+
+  <!-- Localization and Theme Toggle Script -->
+  <script>
+    // Localization data
+    const translations = {
+      en: {
+        'nav-home': 'Home',
+        'nav-features': 'Features',
+        'nav-feedback': 'Feedback',
+        'nav-roadmap': 'Roadmap',
+        'nav-download': 'Download',
+        'hero-description': 'Protect your game saves automatically and reliably with mod support and flexible storage.',
+        'hero-button': 'Download Now',
+        'features-title': 'Key Features ✨',
+        'feature-monitoring-title': 'Monitoring & Backup',
+        'feature-monitoring-desc': 'Track and back up saves for all your games.',
+        'feature-scheduling-title': 'Auto-Scheduling',
+        'feature-scheduling-desc': 'Schedule backups and forget about them.',
+        'feature-mods-title': 'Mods & Paths',
+        'feature-mods-desc': 'Support for mods and custom directories.',
+        'feature-storage-title': 'Flexible Storage',
+        'feature-storage-desc': 'Local.',
+        'feature-tray-title': 'System Tray',
+        'feature-tray-desc': 'Manage from the tray without an open window.',
+        'feature-discovery-title': 'Auto-Discovery',
+        'feature-discovery-desc': 'Automatically find installed games.',
+        'feature-restoration-title': 'Restoration',
+        'feature-restoration-desc': 'Restore progress with one click.',
+        'feature-stats-title': 'Statistics',
+        'feature-stats-desc': 'Graphs and operation logs.',
+        'feedback-title': 'Feedback ❓',
+        'feedback-desc': 'Share ideas and bug reports via GitHub or our feedback form.',
+        'feedback-github': 'GitHub Issue',
+        'feedback-form': 'Feedback Form',
+        'roadmap-title': 'Roadmap 🌐',
+        'roadmap-desc': 'Track upcoming features and development progress.',
+        'roadmap-button': 'View Roadmap',
+        'download-title': 'Download 🔝',
+        'download-desc': 'Install the latest version of MSBT from GitHub Releases.',
+        'download-button': 'Download Release',
+        'footer': '© 2025 MSBT. Thanks for 500 ⭐ on GitHub! Special thanks to Varset.'
+      },
+      ru: {
+        'nav-home': 'Главная',
+        'nav-features': 'Возможности',
+        'nav-feedback': 'Обратная связь',
+        'nav-roadmap': 'Дорожная карта',
+        'nav-download': 'Скачать',
+        'hero-description': 'Защитите свои игровые сохранения автоматически и надёжно с поддержкой модов и гибким хранением.',
+        'hero-button': 'Скачать сейчас',
+        'features-title': 'Ключевые возможности ✨',
+        'feature-monitoring-title': 'Мониторинг и бэкап',
+        'feature-monitoring-desc': 'Слежение за сохранениями всех игр.',
+        'feature-scheduling-title': 'Авто-планирование',
+        'feature-scheduling-desc': 'Запланируйте резервные копии и забудьте о них.',
+        'feature-mods-title': 'Моды и пути',
+        'feature-mods-desc': 'Поддержка модификаций и пользовательских директорий.',
+        'feature-storage-title': 'Гибкое хранение',
+        'feature-storage-desc': 'Локальное.',
+        'feature-tray-title': 'Системный трей',
+        'feature-tray-desc': 'Управление из трея без открытого окна.',
+        'feature-discovery-title': 'Авто-обнаружение',
+        'feature-discovery-desc': 'Поиск установленных игр автоматически.',
+        'feature-restoration-title': 'Восстановление',
+        'feature-restoration-desc': 'Одним кликом верните прогресс.',
+        'feature-stats-title': 'Статистика',
+        'feature-stats-desc': 'Графики и журнал операций.',
+        'feedback-title': 'Обратная связь ❓',
+        'feedback-desc': 'Делитесь идеями и баг-репортами через GitHub или форму обратной связи.',
+        'feedback-github': 'Issue на GitHub',
+        'feedback-form': 'Форма доступна здесь',
+        'roadmap-title': 'Дорожная карта 🌐',
+        'roadmap-desc': 'Следите за будущими возможностями и прогрессом разработки.',
+        'roadmap-button': 'Посмотреть дорожную карту',
+        'download-title': 'Скачать 🔝',
+        'download-desc': 'Установите последнюю версию MSBT на GitHub Releases.',
+        'download-button': 'Скачать релиз',
+        'footer': '© 2025 MSBT. Спасибо за 500 ⭐ на GitHub! Особая благодарность Varset.'
+      }
+    };
+
+    // Function to set language
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        element.textContent = translations[lang][key];
+      });
+      document.documentElement.lang = lang;
+      localStorage.setItem('language', lang);
+      document.getElementById('lang-toggle').textContent = lang === 'en' ? '🌐 RU' : '🌐 EN';
+    }
+
+    // Initialize language
+    const savedLang = localStorage.getItem('language') || 'en';
+    setLanguage(savedLang);
+
+    // Language toggle
+    const langToggle = document.getElementById('lang-toggle');
+    langToggle.addEventListener('click', () => {
+      const currentLang = localStorage.getItem('language') || 'en';
+      const newLang = currentLang === 'en' ? 'ru' : 'en';
+      setLanguage(newLang);
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Initialize theme based on localStorage or system preference
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+      themeToggle.textContent = '☀️';
+    } else {
+      html.classList.remove('dark');
+      themeToggle.textContent = '🌓';
+    }
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const isDark = html.classList.contains('dark');
+      themeToggle.textContent = isDark ? '☀️' : '🌓';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
